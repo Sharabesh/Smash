@@ -2,30 +2,40 @@ from flask import Flask
 import os
 from flask import render_template
 app = Flask(__name__,static_url_path='/static')
+app.static_folder = 'static'
 
 from models import *
  
 @app.route('/')
 def index():
-   return '<html><body><h1>dsljgh World</h1></body></html>'
+   # return '<html><body><h1>dsljgh World</h1></body></html>'
+   return render_template("ui.html")
 
-   return render_template("index.html")
+# @app.route('/addseat/')
+# def bechtel_link():
+#     output_filename = 'libraries.json'
+#     f= open(output_filename, 'r')
+#     text = f.read()
+#     f.close()
+#     x = json.loads(text)
+#     x['Bechtel']+=1
+#     with open(output_filename, 'w') as outfile:
+#         json.dump(x, outfile)
 
 
+# @app.route("/hello",methods=["GET"])
+# def hellpsdkgh():
+# 	if method == "GET":
+# 		return json.dumps({"success":1})
 
-@app.route("/hello",methods=["GET"])
-def hellpsdkgh():
-	if method == "GET":
-		return json.dumps({"success":1})
-
-@app.route("/updateClick",methods=["POST"])
-def hello():
-	data = json.loads(...)
-	x = models.doSomething(data)
-	if x:
-		return json.dumps({"success":1})
-	else:
-		return json.dumps({"success":0})
+# @app.route("/updateClick",methods=["POST"])
+# def hello():
+# 	data = json.loads(...)
+# 	x = models.doSomething(data)
+# 	if x:
+# 		return json.dumps({"success":1})
+# 	else:
+# 		return json.dumps({"success":0})
 
 """
 $.ajax({

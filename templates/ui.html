@@ -8,7 +8,8 @@
 			vertical-align: middle;
 		}
 	</style>
-		<link rel="stylesheet" type="text/css" href="mystyle.css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css') }}" />
+
 		
 		<div class = "header">
 		Select a Library:
@@ -46,7 +47,7 @@
 			<option id = "socialres">Social Research Library</option>
 			<option id = "sasian">South/Southeast Asia Library</option>
 		</select>
-		<button id = "enter">Check In</button>
+		<button id = "enter" action="/addseat/">Check In</button>
 		<button id = "delete"> Check Out </button>
 		</div>
 	</head>
