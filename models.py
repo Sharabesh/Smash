@@ -41,6 +41,12 @@ class Library(BaseModel):
 	class Meta:
 		db_table='library'
 
+def update_count(lib_id):
+    q = Library.update(students = students+1).where(Library.lname == lib_id).execute()
+    val = Library.select().where(Library.lname == lib_id).execute()
+    return val
+
+
 
 
 
