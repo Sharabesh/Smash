@@ -1,0 +1,28 @@
+
+
+div.header {
+		background-color: #F5F5F5;
+	font-family: "Montserrat";
+	text-align: center;
+	padding: 50px;
+
+}
+div.content{
+	font-family: "Montserrat";
+	color: white;
+	width: 170px;
+	height: 200px;
+	background-color: #228b22;
+	text-align: center;
+	vertical-align: middle;
+	margin: 4px;
+	float: left;
+
+}
+
+#enter {
+	font: "Lato";
+}
+#delete {
+	font: "Lato";
+}
