@@ -1,91 +1,104 @@
-<!DOCTYPE html>
 <html>
-	<head class = "header">
-	<style>
+	<head>
+		<title>onClick</title>
+		<script language="javascript">
+			function reply_click_checkin(clicked_id) {
+   				<!--LINK PYTHON FUNCTION-->
+			}
+
+			function reply_click_checkout(clicked_id) {
+   				<!--LINK PYTHON FUNCTION-->
+			}
+
+		</script>
+
+		<style>
 		body {
 			background-color: #F5F5F5;
 			text-align: center;
 			vertical-align: middle;
 		}
-	</style>
+		</style>
+
+
 		<link rel="stylesheet" type="text/css" href="mystyle.css">
-		
 		<div class = "header">
 		Select a Library:
-		<select>
-			<option id = "anthro">Anthropology Library</option>
-			<option id = "art">Art History/Classics Library</option>
-			<option id = "bancroft">Bancroft Library/University Archives</option>
-			<option id = "law">Berkeley Law Library</option>
-			<option id = "vlsb">Bioscience and Natural Resources Library</option>
-			<option id = "haas">Business Library</option>
-			<option id = "wurster">CED Visual Resources Library</option>
-			<option id = "chem">Chemistry and Chemical Engineering Library</option>
-			<option id = "doe">Doe Library</option>
-			<option id = "earth">Earth Sciences and Map Library</option>
-			<option id = "east">East Asian Library</option>
-			<option id = "kresge">Engineering Library</option>
-			<option id = "wursterp2">Environmental Design Library</option>
-			<option id = "ethnic">Ethnic Studies Library</option>
-			<option id = "theological">Graduate Theological Union Library</option>
-			<option id = "irl">Institute for Research on Labor and Employment Library</option>
-			<option id = "government">Institute of Governmental Studies Library</option>
-			<option id = "transportation">Institute of Transportation Studies Library</option>
-			<option id = "stacks">Main (Gardner) Stacks</option>
-			<option id = "twain">Mark Twain Papers and Project</option>
-			<option id = "math">Mathematics Statistics Library</option>
-			<option id = "moff">Moffitt Library</option>
-			<option id = "morrison">Morrison Library</option>
-			<option id = "music">Music Library</option>
-			<option id = "newspapers">Newspapers and Microforms Library</option>
-			<option id = "opt">Optometry and Health Sciences Library</option>
-			<option id = "peer">Pacific Earthquake Engineering Research (PEER) Library</option>
-			<option id = "physics">Physics-Astronomy Library</option>
-			<option id = "ph">Public Health Library</option>
-			<option id = "robbins">Robbins Collection Library</option>
-			<option id = "socialres">Social Research Library</option>
-			<option id = "sasian">South/Southeast Asia Library</option>
+		<select name="list_of_libraries" id="list_of_libraries">
+  			<option value="UC BERKELEY LIBRARIES">UC BERKELEY LIBRARIES</option>
+  			<option value = "anthro">Anthropology Library</option>
+			<option value = "art">Art History/Classics Library</option>
+			<option value = "bancroft">Bancroft Library/University Archives</option>
+			<option value = "law">Berkeley Law Library</option>
+			<option value = "vlsb">Bioscience and Natural Resources Library</option>
+			<option value = "haas">Business Library</option>
+			<option value = "wurster">CED Visual Resources Library</option>
+			<option value = "chem">Chemistry and Chemical Engineering Library</option>
+			<option value = "doe">Doe Library</option>
+			<option value = "earth">Earth Sciences and Map Library</option>
+			<option value = "east">East Asian Library</option>
+			<option value = "kresge">Engineering Library</option>
+			<option value = "wursterp2">Environmental Design Library</option>
+			<option value = "ethnic">Ethnic Studies Library</option>
+			<option value = "theological">Graduate Theological Union Library</option>
+			<option value = "irl">Institute for Research on Labor and Employment Library</option>
+			<option value = "government">Institute of Governmental Studies Library</option>
+			<option value = "transportation">Institute of Transportation Studies Library</option>
+			<option value = "stacks">Main (Gardner) Stacks</option>
+			<option value = "twain">Mark Twain Papers and Project</option>
+			<option value = "math">Mathematics Statistics Library</option>
+			<option value = "moff">Moffitt Library</option>
+			<option value = "morrison">Morrison Library</option>
+			<option value = "music">Music Library</option>
+			<option value = "newspapers">Newspapers and Microforms Library</option>
+			<option value = "opt">Optometry and Health Sciences Library</option>
+			<option value = "peer">Pacific Earthquake Engineering Research (PEER) Library</option>
+			<option value = "physics">Physics-Astronomy Library</option>
+			<option value = "ph">Public Health Library</option>
+			<option value = "robbins">Robbins Collection Library</option>
+			<option value = "socialres">Social Research Library</option>
+			<option value = "sasian">South/Southeast Asia Library</option>
 		</select>
-		<button id = "enter">Check In</button>
-		<button id = "delete"> Check Out </button>
-		</div>
+ 		<button type="enter" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkin(document.getElementById('list_of_libraries').value)){return false;}" >Check In</button> 
+
+ 		<button type="delete" input style="background-color:#F5F5F5;color:black"; font-family: "Montserrat" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkout(document.getElementById('list_of_libraries').value)){return false;}" >Check Out</button>
+</div>
 	</head>
+
 	<body>
-		
-		<div class = "content" id = "anthro">Anthropology Library</div>
-		<div class = "content" id ="art">Art History/Classics Library</div>
-		<div class = "content" id = "bancroft">Bancroft Library/University Archives</div>
-		<div class = "content" id = "law">Berkeley Law Library</div>
-		<div class = "content" id = "vlsb">Bioscience and Natural Resources Library</div>
-		<div class = "content" id = "haas">Business Library</div>
-		<div class = "content" id = "wurster">CED Visual Resources Library</div>
-		<div class = "content" id = "chem">Chemistry and Chemical Engineering Library</div>
-		<div class = "content" id = "doe">Doe Library</div>
-		<div class = "content" id = "earth">Earth Sciences and Map Library</div>
-		<div class = "content" id = "east">East Asian Library</div>
-		<div class = "content" id = "kresge">Engineering Library</div>
-		<div class = "content" id = "wursterp2">Environmental Design Library</div>
-		<div class = "content" id = "ethnic">Ethnic Studies Library</div>
-		<div class = "content" id = "theological">Graduate Theological Union Library</div>
-		<div class = "content" id = "irl">Institute for Research on Labor and Employment Library</div>
-		<div class = "content" id = "government">Institute of Governmental Studies Library</div>
-		<div class = "content" id = "transportation">Institute of Transportation Studies Library</div>
-		<div class = "content" id = "stacks">Main (Gardner) Stacks</div>
-		<div class = "content" id = "twain">Mark Twain Papers and Project</div>
-		<div class = "content" id = "math">Mathematics Statistics Library</div>
-		<div class = "content" id = "moff">Moffitt Library</div>
-		<div class = "content" id = "morrison">Morrison Library</div>
-		<div class = "content" id = "music">Music Library</div>
-		<div class = "content" id = "newspapers">Newspapers and Microforms Library</div>
-		<div class = "content" id = "opt">Optometry and Health Sciences Library</div>
-		<div class = "content" id = "peer">Pacific Earthquake Engineering Research (PEER) Library</div>
-		<div class = "content" id = "physics">Physics-Astronomy Library</div>
-		<div class = "content" id = "ph">Public Health Library</div>
-		<div class = "content" id = "robbins">Robbins Collection Library</div>
-		<div class = "content" id = "socialres">Social Research Library</div>
-		<div class = "content" id = "sasian">South/Southeast Asia Library</div>
+	<div class = "content" value = "anthro">Anthropology Library</div>
+		<div class = "content" value ="art">Art History/Classics Library</div>
+		<div class = "content" value = "bancroft">Bancroft Library/University Archives</div>
+		<div class = "content" value = "law">Berkeley Law Library</div>
+		<div class = "content" value = "vlsb">Bioscience and Natural Resources Library</div>
+		<div class = "content" value = "haas">Business Library</div>
+		<div class = "content" value = "wurster">CED Visual Resources Library</div>
+		<div class = "content" value = "chem">Chemistry and Chemical Engineering Library</div>
+		<div class = "content" value = "doe">Doe Library</div>
+		<div class = "content" value = "earth">Earth Sciences and Map Library</div>
+		<div class = "content" value = "east">East Asian Library</div>
+		<div class = "content" value = "kresge">Engineering Library</div>
+		<div class = "content" value = "wursterp2">Environmental Design Library</div>
+		<div class = "content" value = "ethnic">Ethnic Studies Library</div>
+		<div class = "content" value = "theological">Graduate Theological Union Library</div>
+		<div class = "content" value = "irl">Institute for Research on Labor and Employment Library</div>
+		<div class = "content" value = "government">Institute of Governmental Studies Library</div>
+		<div class = "content" value = "transportation">Institute of Transportation Studies Library</div>
+		<div class = "content" value = "stacks">Main (Gardner) Stacks</div>
+		<div class = "content" value = "twain">Mark Twain Papers and Project</div>
+		<div class = "content" value = "math">Mathematics Statistics Library</div>
+		<div class = "content" value = "moff">Moffitt Library</div>
+		<div class = "content" value = "morrison">Morrison Library</div>
+		<div class = "content" value = "music">Music Library</div>
+		<div class = "content" value = "newspapers">Newspapers and Microforms Library</div>
+		<div class = "content" value = "opt">Optometry and Health Sciences Library</div>
+		<div class = "content" value = "peer">Pacific Earthquake Engineering Research (PEER) Library</div>
+		<div class = "content" value = "physics">Physics-Astronomy Library</div>
+		<div class = "content" value = "ph">Public Health Library</div>
+		<div class = "content" value = "robbins">Robbins Collection Library</div>
+		<div class = "content" value = "socialres">Social Research Library</div>
+		<div class = "content" value = "sasian">South/Southeast Asian Library</div>
 
-
-		</div>
 	</body>
+
 </html>

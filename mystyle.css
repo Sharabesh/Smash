@@ -1,7 +1,7 @@
 
 
 div.header {
-		background-color: #F5F5F5;
+	background-color: #F5F5F5;
 	font-family: "Montserrat";
 	text-align: center;
 	padding: 50px;
@@ -12,9 +12,12 @@ div.content{
 	color: white;
 	width: 170px;
 	height: 200px;
-	background-color: #228b22;
-	text-align: center;
+	display: table-cell;
 	vertical-align: middle;
+	text-align: center;
+	line-height: 30px;
+	background-color: #febb00 ;
+	
 	margin: 4px;
 	float: left;
 
@@ -26,3 +29,21 @@ div.content{
 #delete {
 	font: "Lato";
 }
+
+
+<!--comment baby 
+(2) dd3300 Red(Orange) (.91 - 1.0)
+(3) ff6600  (.81 - 90)
+(4) ff9900  (.71 - 80)
+(5) febb00 Gold  (.61 - 70)
+	fedd00 (.51 - 60)
+(7) bbdd00 (.41 - 50)
+(8) 99cc00 (.31 - 40)
+(9) 66bb00 (.21 - 30)
+(10) 33aa00 (.11 - .20)
+(11) 007700 (0-.10)
+
+
+
+#228b22
+-->
