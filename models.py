@@ -7,8 +7,6 @@ from urllib.parse import urlparse
 
 url = urlparse(os.environ["SMASH_URL"])
 
-
-
 config = dict(
     database=url.path[1:],
     user=url.username,
