@@ -27,6 +27,11 @@ def hello():
     return json.dumps({'status': val})
 
 
+@app.route("/getNames",methods=["GET"])
+def yield_names():
+    return json.dumps([x.name for x in get_all_names()])
+
+
 
 
 
