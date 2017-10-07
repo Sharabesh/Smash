@@ -40,7 +40,7 @@ class Library(BaseModel):
         db_table = 'library'
 
 
-def update_count(lib_id):
-    q = Library.update(students= Library.students + 1).where(Library.lname == lib_id).execute()
+def update_count(lib_id, inout):
+    q = Library.update(students= Library.students + inout).where((Library.lname == lib_id) & (Library.capacity >= Library.students+inout) & (0 <= Library.students+inout)).execute()
     val = list(Library.select().where(Library.lname == lib_id).execute())[0]
     return val.students

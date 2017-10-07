@@ -22,11 +22,18 @@ def index():
 def ui():
    return render_template("ui.html")
 
-@app.route("/hello", methods=["POST"])
-def hello():
+@app.route("/helloin", methods=["POST"])
+def helloin():
 
     k = request.form['click_val']
-    val = update_count(k)
+    val = update_count(k,1)
+    return json.dumps({'status': val})
+
+@app.route("/helloout", methods=["POST"])
+def helloout():
+
+    k = request.form['click_val']
+    val = update_count(k,-1)
     return json.dumps({'status': val})
 
 
@@ -44,7 +51,7 @@ def hello():
     # return json.dumps({"success":0})
 
 
-"""
+
 
 """
 $.ajax({
