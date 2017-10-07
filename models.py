@@ -18,7 +18,6 @@ config = dict(
     sslmode='require'
 )
 
-
 conn = PostgresqlExtDatabase(
     autocommit=True,
     autorollback=True,
@@ -28,17 +27,20 @@ conn = PostgresqlExtDatabase(
 
 
 class BaseModel(signals.Model):
-
     class Meta:
         database = conn
 
 
 class Library(BaseModel):
-	lname = peewee.PrimaryKeyField(null=True)
-	students = peewee.IntegerField(null=True)
-	capacity = peewee.IntegerField(null=True)
+    lname = peewee.CharField(null=True,primary_key=True)
+    students = peewee.IntegerField(null=True)
+    capacity = peewee.IntegerField(null=True)
+
+    class Meta:
+        db_table = 'library'
 
 
-
-	class Meta:
-		db_table='library'
+def update_count(lib_id):
+    q = Library.update(students= Library.students + 1).where(Library.lname == lib_id).execute()
+    val = list(Library.select().where(Library.lname == lib_id).execute())[0]
+    return val.students

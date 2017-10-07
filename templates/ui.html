@@ -1,16 +1,8 @@
 <html>
 	<head>
-		<title>onClick</title>
-		<script language="javascript">
-			function reply_click_checkin(clicked_id) {
-   				<!-- LINK PYTHON FUNCTION -->
-			}
+		<title>CALHACKS</title>
+		<script src = "{{ url_for('static', filename='jquery.min.js') }}"></script>
 
-			function reply_click_checkout(clicked_id) {
-   				<!--LINK PYTHON FUNCTION-->
-			}
-
-		</script>
 
 		<style>
 		body {
@@ -21,10 +13,10 @@
 		</style>
 
 
-		<link rel="stylesheet" type="text/css" href="/templates/mystyle.css">
+		<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='mystyle.css') }}" >
 		<div class = "header">
 		Select a Library:
-		<select name="list_of_libraries" id="list_of_libraries">
+		<select name="list_of_libraries" id="listOfLibraries">
   			<option value="UC BERKELEY LIBRARIES">UC BERKELEY LIBRARIES</option>
   			<option value = "anthro">Anthropology Library</option>
 			<option value = "art">Art History/Classics Library</option>
@@ -59,9 +51,10 @@
 			<option value = "socialres">Social Research Library</option>
 			<option value = "sasian">South/Southeast Asia Library</option>
 		</select>
- 		<button type="enter" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkin(document.getElementById('list_of_libraries').value)){return false;}" >Check In</button>
+ 		<button type="enter" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkin(document.getElementById('list_of_libraries').value)){return false;}" >Check out</button>
 
- 		<button type="delete" input style="background-color:#F5F5F5;color:black"; font-family: "Montserrat" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkout(document.getElementById('list_of_libraries').value)){return false;}" >Check Out</button>
+
+ 		<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_click()" >Check Out</button>
 </div>
 	</head>
 
@@ -98,7 +91,32 @@
 		<div class = "content" value = "robbins">Robbins Collection Library</div>
 		<div class = "content" value = "socialres">Social Research Library</div>
 		<div class = "content" value = "sasian">South/Southeast Asian Library</div>
+		<script>
+			// function reply_click_checkin(clicked_id) {
+   // 				<!--LINK PYTHON FUNCTION-->
+			// }
 
+			// function reply_click_checkout(clicked_id) {
+   // 				<!--LINK PYTHON FUNCTION-->
+			// }
+			function execute_click() {
+				var k = $("#listOfLibraries").val();
+                console.log("HER");
+				$.ajax({
+					type:"POST",
+					url: "/hello",
+					data: {
+						"click_val":k
+					},
+				    complete: function(o) {
+                        obj = JSON.parse(o.responseText);
+                        var done = obj['status'];
+                        console.log(done)
+                    }
+				})
+			}
+
+		</script>
 	</body>
 
 </html>
