@@ -26,7 +26,19 @@ def hello():
     val = update_count(k)
     return json.dumps({'status': val})
 
+@app.route("/start", methods=["POST"])
+def start():
 
+    k = request.form['click_val']
+    val = get_count(k)
+    return json.dumps({'status': val})
+
+
+@app.route("/capacity", methods=["POST"])
+def capacity():
+    k = request.form['click_val']
+    val = get_capacity(k)
+    return json.dumps({'status': val})
 
 
 
@@ -59,4 +71,4 @@ $.ajax({
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port)

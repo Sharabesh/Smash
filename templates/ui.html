@@ -11,9 +11,12 @@
 			vertical-align: middle;
 		}
 		</style>
-
+		<p id="save_val" style= "display:hidden"></p>
+		<p id="save_val2" style= "display:hidden"></p>
+		<p id="save_val3" style= "display:hidden"></p>
 
 		<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='mystyle.css') }}" >
+
 		<div class = "header">
 		Select a Library:
 		<select name="list_of_libraries" id="listOfLibraries">
@@ -51,57 +54,49 @@
 			<option value = "socialres">Social Research Library</option>
 			<option value = "sasian">South/Southeast Asia Library</option>
 		</select>
- 		<button type="enter" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkin(document.getElementById('list_of_libraries').value)){return false;}" >Check out</button> 
-
+ <!-- 		<button type="enter" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkin(document.getElementById('list_of_libraries').value)){return false;}" >Check out</button> 
+ -->
 
  		<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_click()" >Check Out</button>
 </div>
 	</head>
 
 	<body>
-	<div class = "content" value = "anthro">Anthropology Library</div>
-		<div class = "content" value ="art">Art History/Classics Library</div>
-		<div class = "content" value = "bancroft">Bancroft Library/University Archives</div>
-		<div class = "content" value = "law">Berkeley Law Library</div>
-		<div class = "content" value = "vlsb">Bioscience and Natural Resources Library</div>
-		<div class = "content" value = "haas">Business Library</div>
-		<div class = "content" value = "wurster">CED Visual Resources Library</div>
-		<div class = "content" value = "chem">Chemistry and Chemical Engineering Library</div>
-		<div class = "content" value = "doe">Doe Library</div>
-		<div class = "content" value = "earth">Earth Sciences and Map Library</div>
-		<div class = "content" value = "east">East Asian Library</div>
-		<div class = "content" value = "kresge">Engineering Library</div>
-		<div class = "content" value = "wursterp2">Environmental Design Library</div>
-		<div class = "content" value = "ethnic">Ethnic Studies Library</div>
-		<div class = "content" value = "theological">Graduate Theological Union Library</div>
-		<div class = "content" value = "irl">Institute for Research on Labor and Employment Library</div>
-		<div class = "content" value = "government">Institute of Governmental Studies Library</div>
-		<div class = "content" value = "transportation">Institute of Transportation Studies Library</div>
-		<div class = "content" value = "stacks">Main (Gardner) Stacks</div>
-		<div class = "content" value = "twain">Mark Twain Papers and Project</div>
-		<div class = "content" value = "math">Mathematics Statistics Library</div>
-		<div class = "content" value = "moff">Moffitt Library</div>
-		<div class = "content" value = "morrison">Morrison Library</div>
-		<div class = "content" value = "music">Music Library</div>
-		<div class = "content" value = "newspapers">Newspapers and Microforms Library</div>
-		<div class = "content" value = "opt">Optometry and Health Sciences Library</div>
-		<div class = "content" value = "peer">Pacific Earthquake Engineering Research (PEER) Library</div>
-		<div class = "content" value = "physics">Physics-Astronomy Library</div>
-		<div class = "content" value = "ph">Public Health Library</div>
-		<div class = "content" value = "robbins">Robbins Collection Library</div>
-		<div class = "content" value = "socialres">Social Research Library</div>
-		<div class = "content" value = "sasian">South/Southeast Asian Library</div>
+	<div class = "content" id = "anthro">Anthropology Library</div>
+		<div class = "content" id ="art">Art History/Classics Library</div>
+		<div class = "content" id = "bancroft">Bancroft Library/University Archives</div>
+		<div class = "content" id = "law">Berkeley Law Library</div>
+		<div class = "content" id = "vlsb">Bioscience and Natural Resources Library</div>
+		<div class = "content" id = "haas">Business Library</div>
+		<div class = "content" id = "wurster">CED Visual Resources Library</div>
+		<div class = "content" id = "chem">Chemistry and Chemical Engineering Library</div>
+		<div class = "content" id = "doe">Doe Library</div>
+		<div class = "content" id = "earth">Earth Sciences and Map Library</div>
+		<div class = "content" id = "east">East Asian Library</div>
+		<div class = "content" id = "kresge">Engineering Library</div>
+		<div class = "content" id = "wursterp2">Environmental Design Library</div>
+		<div class = "content" id = "ethnic">Ethnic Studies Library</div>
+		<div class = "content" id = "theological">Graduate Theological Union Library</div>
+		<div class = "content" id = "irl">Institute for Research on Labor and Employment Library</div>
+		<div class = "content" id = "government">Institute of Governmental Studies Library</div>
+		<div class = "content" id = "transportation">Institute of Transportation Studies Library</div>
+		<div class = "content" id = "stacks">Main (Gardner) Stacks</div>
+		<div class = "content" id = "twain">Mark Twain Papers and Project</div>
+		<div class = "content" id = "math">Mathematics Statistics Library</div>
+		<div class = "content" id = "moff">Moffitt Library</div>
+		<div class = "content" id = "morrison">Morrison Library</div>
+		<div class = "content" id = "music">Music Library</div>
+		<div class = "content" id = "newspapers">Newspapers and Microforms Library</div>
+		<div class = "content" id = "opt">Optometry and Health Sciences Library</div>
+		<div class = "content" id = "peer">Pacific Earthquake Engineering Research (PEER) Library</div>
+		<div class = "content" id = "physics">Physics-Astronomy Library</div>
+		<div class = "content" id = "ph">Public Health Library</div>
+		<div class = "content" id = "robbins">Robbins Collection Library</div>
+		<div class = "content" id = "socialres">Social Research Library</div>
+		<div class = "content" id = "sasian">South/Southeast Asian Library</div>
 		<script>
-			// function reply_click_checkin(clicked_id) {
-   // 				<!--LINK PYTHON FUNCTION-->
-			// }
-
-			// function reply_click_checkout(clicked_id) {
-   // 				<!--LINK PYTHON FUNCTION-->
-			// }
-			function execute_click() {
+		function execute_click() {
 				var k = $("#listOfLibraries").val();
-                console.log("HER");
 				$.ajax({
 					type:"POST",
 					url: "/hello",
@@ -111,11 +106,109 @@
 				    complete: function(o) {
                         obj = JSON.parse(o.responseText);
                         var done = obj['status'];
-                        console.log(done)
+
                     }
 				})
 			}
+		function execute_click_loop(lib_id) {
+				var k = lib_id;
+				$.ajax({
+					type:"POST",
+					url: "/start",
+					data: {
+						"click_val":k
+					},
+				    complete: function(o) {
+                        obj = JSON.parse(o.responseText);
+                        var done = obj['status'];
+                        console.log(done);
+                        console.log('is_done');
+                        $("#save_val").text = done;
+                    }
+				})
+			}
+		function execute_click_capacity(lib_id) {
+				var k = lib_id;
+				var return_val;
+				$.ajax({
+					type:"POST",
+					url: "/capacity",
+					data: {
+						"click_val":k
+					},
+				    complete: function(o) {
+                        obj = JSON.parse(o.responseText);
+                        return_val = obj['status'];
+                        
+                        $("#save_val2").text = return_val
 
+                    }
+				})
+				return return_val;
+			}
+
+		function update_background_color() {
+
+			libs = {"anthro": 0,"art": 0, "bancroft":0, "law":0, "vlsb":0, "haas":0, "wurster":0,
+					"chem":0, "doe":0, "earth":0, "east":0, "kresge":0, "wursterp2":0, "ethnic":0, "theological":0,
+					"irl":0, "government":0, "transportation":0, "stacks":0, "twain":0, "math":0,
+					"moff":0, "morrison":0, "music":0, "newspapers":0, "opt":0, "peer":0, "physics":0, "ph":0,
+					"robbins":0, "socialres":0, "sasian":0};
+			for (var key in libs) {
+				execute_click_loop(key);
+				execute_click_capacity(key);
+				libs[key] = current;
+				var current = parseInt($("#save_val").text())
+				var maxcap = parseInt($("#save_val2").text())
+			
+				var ratio = 1.0*current / maxcap;
+				var color = 0;
+				console.log(current);
+				console.log(maxcap);
+				console.log(ratio);
+				if (0.0 <= ratio <= 0.10) 
+				color = "#007700";
+
+				else if (0.10 < ratio <= 0.20) 
+				color = "#33AA00";
+
+				else if (0.20 < ratio <= 0.30) 
+				color = "#66BB00";
+
+				else if (0.30 < ratio <= 0.40) 
+				color = "#99CC00";
+
+				else if (0.40 < ratio <= 0.50) 
+				color = "#BBDD00";
+
+				else if (0.50 < ratio <= 0.60) 
+				color = "#FEDD00";
+
+				else if (0.60 < ratio <= 0.70) 
+				color = "#FEBB00";
+
+				else if (0.70 < ratio <= 0.80) 
+				color = "#FF9900";
+
+				else if (0.80 < ratio <= 0.90) 
+				color = "#FF6600";
+
+				else if (0.90 < ratio <= 1.0) 
+				color = "dd3300";
+
+				else if (1.0 < ratio) 
+				color = 'black';
+			console.log(color);
+
+			$("#"+key).css("background-color", color);
+			console.log(key);
+				document.getElementById(key).style["background-color"] = color;
+			}
+		}
+
+		$(document).ready(function(){
+			update_background_color();
+		})
 		</script>
 	</body>
 

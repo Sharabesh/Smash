@@ -40,5 +40,25 @@ class Library(BaseModel):
 
 def update_count(lib_id):
     q = Library.update(students= Library.students + 1).where(Library.lname == lib_id).execute()
-    val = list(Library.select().where(Library.lname == lib_id).execute())[0]
+    val = list(Library.select().where(Library.lname == lib_id).execute())
+    if val:
+        val = val[0]
+    else:
+        return 10000
     return val.students
+
+def get_count(lib_id):
+    val = list(Library.select().where(Library.lname == lib_id).execute())
+    if val:
+        val = val[0]
+    else:
+        return 10000
+    return val.students
+def get_capacity(lib_id):
+    val = list(Library.select().where(Library.lname == lib_id).execute())
+    if val:
+        val = val[0]
+    else:
+        return 10000
+    return val.capacity
+
