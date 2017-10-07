@@ -42,3 +42,6 @@ def update_count(lib_id):
     q = Library.update(students= Library.students + 1).where(Library.lname == lib_id).execute()
     val = list(Library.select().where(Library.lname == lib_id).execute())[0]
     return val.students
+
+def get_all_names():
+    return list(Library.select(Library.lname).execute())
