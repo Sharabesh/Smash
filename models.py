@@ -1,11 +1,13 @@
 import peewee
-import os 
+import os
 from playhouse import signals
 from playhouse.postgres_ext import *
 from playhouse.csv_loader import *
 from urllib.parse import urlparse
 
 url = urlparse(os.environ["SMASH_URL"])
+
+
 
 config = dict(
     database=url.path[1:],
@@ -40,10 +42,3 @@ class Library(BaseModel):
 
 	class Meta:
 		db_table='library'
-
-
-
-
-
-
-

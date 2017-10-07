@@ -3,7 +3,7 @@
 		<title>onClick</title>
 		<script language="javascript">
 			function reply_click_checkin(clicked_id) {
-   				<!--LINK PYTHON FUNCTION-->
+   				<!-- LINK PYTHON FUNCTION -->
 			}
 
 			function reply_click_checkout(clicked_id) {
@@ -21,7 +21,7 @@
 		</style>
 
 
-		<link rel="stylesheet" type="text/css" href="mystyle.css">
+		<link rel="stylesheet" type="text/css" href="/templates/mystyle.css">
 		<div class = "header">
 		Select a Library:
 		<select name="list_of_libraries" id="list_of_libraries">
@@ -59,7 +59,7 @@
 			<option value = "socialres">Social Research Library</option>
 			<option value = "sasian">South/Southeast Asia Library</option>
 		</select>
- 		<button type="enter" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkin(document.getElementById('list_of_libraries').value)){return false;}" >Check In</button> 
+ 		<button type="enter" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkin(document.getElementById('list_of_libraries').value)){return false;}" >Check In</button>
 
  		<button type="delete" input style="background-color:#F5F5F5;color:black"; font-family: "Montserrat" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkout(document.getElementById('list_of_libraries').value)){return false;}" >Check Out</button>
 </div>
