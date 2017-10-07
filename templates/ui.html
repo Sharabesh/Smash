@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>onClick</title>
+		<title>CALHACKS</title>
 		<script src = "{{ url_for('static', filename='jquery.min.js') }}"></script>
 
 
@@ -54,7 +54,7 @@
  		<button type="enter" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkin(document.getElementById('list_of_libraries').value)){return false;}" >Check out</button> 
 
 
- 		<button type="delete" input style="background-color:#F5F5F5;color:black"; font-family: "Montserrat" name="submitSent" class="btn btn-primary"onclick="execute_click()" >Check Out</button>
+ 		<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_click()" >Check Out</button>
 </div>
 	</head>
 
@@ -101,17 +101,18 @@
 			// }
 			function execute_click() {
 				var k = $("#listOfLibraries").val();
-			
+                console.log("HER");
 				$.ajax({
 					type:"POST",
 					url: "/hello",
 					data: {
 						"click_val":k
-					}
-				}).complete(function(o) {
-					obj = JSON.parse(o.responseText)
-					var done = obj['status']
-					console.log(done)
+					},
+				    complete: function(o) {
+                        obj = JSON.parse(o.responseText);
+                        var done = obj['status'];
+                        console.log(done)
+                    }
 				})
 			}
 

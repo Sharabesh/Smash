@@ -1,35 +1,45 @@
 from flask import Flask
 import os
 from flask import render_template
-app = Flask(__name__,static_url_path='/static')
+from flask import *
+import json
+from models import *
+
+
+app = Flask(__name__, static_url_path='/static')
 app.static_folder = 'static'
 
-from models import *
- 
+
+
+
 @app.route('/')
 def index():
-   # return '<html><body><h1>dsljgh World</h1></body></html>'
+    # return '<html><body><h1>dsljgh World</h1></body></html>'
 
-   return render_template("ui.html")
+    return render_template("ui.html")
 
 
-
-@app.route("/hello",methods=["POST"])
+@app.route("/hello", methods=["POST"])
 def hello():
-	if method == "POST":
-		k = request.json
-		k = json.loads(k)
-		val = update_count(k['click_val'])
-		return json.dumps({'status': val})
 
-# @app.route("/updateClick",methods=["POST"])
-# def hello():
-# 	data = json.loads(...)
-# 	x = models.doSomething(data)
-# 	if x:
-# 		return json.dumps({"success":1})
-# 	else:
-		# return json.dumps({"success":0})
+    k = request.form['click_val']
+    val = update_count(k)
+    return json.dumps({'status': val})
+
+
+
+
+
+
+    # @app.route("/updateClick",methods=["POST"])
+    # def hello():
+    # 	data = json.loads(...)
+    # 	x = models.doSomething(data)
+    # 	if x:
+    # 		return json.dumps({"success":1})
+    # 	else:
+    # return json.dumps({"success":0})
+
 
 """
 $.ajax({
@@ -47,29 +57,6 @@ $.ajax({
 
  """
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
-	port = int(os.environ.get('PORT', 5000))
-	app.run(host='0.0.0.0', port=port, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
