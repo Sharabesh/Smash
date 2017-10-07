@@ -1,0 +1,51 @@
+import peewee
+import os 
+from playhouse import signals
+from playhouse.postgres_ext import *
+from playhouse.csv_loader import *
+from urllib.parse import urlparse
+
+url = urlparse(os.environ["SMASH_URL"])
+
+
+
+config = dict(
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port,
+    sslmode='require'
+)
+
+
+conn = PostgresqlExtDatabase(
+    autocommit=True,
+    autorollback=True,
+    register_hstore=False,
+    **config
+)
+
+
+class BaseModel(signals.Model):
+
+    class Meta:
+        database = conn
+
+
+class Library(BaseModel):
+	lname = peewee.PrimaryKeyField(null=True)
+	students = peewee.IntegerField(null=True)
+	capacity = peewee.IntegerField(null=True)
+
+
+
+	class Meta:
+		db_table='library'
+
+
+
+
+
+
+
