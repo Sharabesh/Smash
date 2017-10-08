@@ -1,4 +1,6 @@
 
+ @font-face { 
+ 	font-family: Montserrat; src: url('Montserrat-Regular.ttf'); } 
 
 div.header {
 	background-color: #F5F5F5;
