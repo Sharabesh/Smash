@@ -7,14 +7,16 @@ import json
 from models import *
 
 
+
 app = Flask(__name__, static_url_path='/static')
 app.static_folder = 'static'
 
 
 
+
 @app.route('/')
 def ui():
-    return render_template('ui.html', user_logged_in=False)
+    return render_template('ui.html')
 
 @app.route("/helloin", methods=["POST"])
 def helloin():
@@ -58,6 +60,21 @@ def dumpAll():
 @app.route("/getNames",methods=["GET"])
 def yield_names():
     return json.dumps([x.name for x in get_all_names()])
+
+
+
+@app.route("/login",methods=["POST"])
+def login():
+    user = request.form["username"]
+    password = request.form["password"]
+    s = Session()
+    s.user_id = user
+    s.password = password
+    response = make_response(render_template("ui.html",user_logged_in=True))
+    response.set_cookie("session_id",s.session_id)
+    return response
+
+
 
 
 

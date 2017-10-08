@@ -1,9 +1,23 @@
 <html>
 	<head>
-		<title>CALHACKS</title>
-		<script src = "{{ url_for('static', filename='jquery.min.js') }}"></script>
+		<title>Save Me A Seat, Honey</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+
+{#		<script src = "{{ url_for('static', filename='jquery.min.js') }}"></script>#}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
 
 
+
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='mystyle.css') }}" >
 		<style>
 		body {
 			background-color: #F5F5F5;
@@ -14,16 +28,23 @@
 
 
 
+
 		<p id="save_val" style= "display:hidden"></p>
 		<p id="save_val2" style= "display:hidden"></p>
 		<p id="save_val3" style= "display:hidden"></p>
 
-		<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='mystyle.css') }}" >
 
+
+
+
+
+
+
+    <div class="container-fluid">
 		<div class = "header">
 		Select a Library:
-		<select name="list_of_libraries" id="listOfLibraries">
-  			<option value="UC BERKELEY LIBRARIES">UC BERKELEY LIBRARIES</option>
+		<select name="list_of_libraries" id="listOfLibraries" class="" data-live-search="true" title="Choose a Library">
+  			<option value="UC BERKELEY LIBRARIES" disabled>UC BERKELEY LIBRARIES</option>
   			<option value = "anthro">Anthropology Library</option>
 			<option value = "art">Art History/Classics Library</option>
 			<option value = "bancroft">Bancroft Library/University Archives</option>
@@ -59,21 +80,20 @@
 		</select>
 
 
-{%if user_logged_in%}
+
+
 <button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_out()" >Check Out</button>
 
  		<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_in()" >Check In</button>
-{%endif%}
 
-{%if not user_logged_in%}
-<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="log_in()" >Log In</button>
-
-{%endif%}
 
 </div>
 	</head>
 
+
 	<body>
+
+    <div class="container">
 	<div class = "content" id = "anthro">Anthropology Library</div>
 		<div class = "content" id ="art">Art History/Classics Library</div>
 		<div class = "content" id = "bancroft">Bancroft Library/University Archives</div>
@@ -106,6 +126,8 @@
 		<div class = "content" id = "robbins">Robbins Collection Library</div>
 		<div class = "content" id = "socialres">Social Research Library</div>
 		<div class = "content" id = "sasian">South/Southeast Asian Library</div>
+        </div>
+</div>
 		<script>
 
 			// function reply_click_checkin(clicked_id) {
@@ -148,23 +170,7 @@
 				})
 			}
 
-			function log_in() {
-
-				var k = $("#listOfLibraries").val();
-				$.ajax({
-					type:"POST",
-					url: "/login",
-					data: {
-						"click_val":k
-					},
-				    complete: function(o) {
-                        obj = JSON.parse(o.responseText);
-                        var done = obj['status'];
-
-                    }
-				})
-				console.log("hi");
-			}
+		
 
 
 		function execute_click_loop(lib_id) {
@@ -220,9 +226,9 @@
 
                         var ratio = 1.0*current / maxcap;
                         var color = 0;
-                        console.log(current);
-                        console.log(maxcap);
-                        console.log(ratio);
+                        // console.log(current);
+                        // console.log(maxcap);
+                        // console.log(ratio);
                         if (0.0 <= ratio <= 0.10)
                         color = "#007700";
 
@@ -250,15 +256,16 @@
                         else if (0.80 < ratio <= 0.90)
                         color = "#FF6600";
 
-                        else if (0.90 < ratio <= 1.0)
+                        else if (0.90 < ratio <= 0.99){
+                        // console.log(ratio);
                         color = "dd3300";
-
-                        else if (1.0 < ratio)
-                        color = 'black';
-                        console.log(color);
+                    }
+                        else if (1.0 <= ratio)
+                        color = '000000';
+                        // console.log(color);
 
                         $("#"+key).css("background-color", color);
-                        console.log(key);
+                        // console.log(key);
                     }
 
 
