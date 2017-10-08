@@ -54,10 +54,11 @@
 			<option value = "socialres">Social Research Library</option>
 			<option value = "sasian">South/Southeast Asia Library</option>
 		</select>
- <!-- 		<button type="enter" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="if(reply_click_checkin(document.getElementById('list_of_libraries').value)){return false;}" >Check out</button> 
- -->
 
- 		<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_click()" >Check Out</button>
+<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_out()" >Check Out</button>
+
+ 		<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_in()" >Check In</button>
+
 </div>
 	</head>
 
@@ -95,11 +96,36 @@
 		<div class = "content" id = "socialres">Social Research Library</div>
 		<div class = "content" id = "sasian">South/Southeast Asian Library</div>
 		<script>
-		function execute_click() {
+
+			// function reply_click_checkin(clicked_id) {
+   // 				<!--LINK PYTHON FUNCTION-->
+			// }
+
+			// function reply_click_checkout(clicked_id) {
+   // 				<!--LINK PYTHON FUNCTION-->
+			// }
+			function execute_in() {
+				var k = $("#listOfLibraries").val();
+                console.log("HER");
+				$.ajax({
+					type:"POST",
+					url: "/helloin",
+					data: {
+						"click_val":k
+					},
+				    complete: function(o) {
+                        obj = JSON.parse(o.responseText);
+                        var done = obj['status'];
+                        console.log(done)
+                    }
+				})
+			}
+
+			function execute_out() {
 				var k = $("#listOfLibraries").val();
 				$.ajax({
 					type:"POST",
-					url: "/hello",
+					url: "/helloout",
 					data: {
 						"click_val":k
 					},

@@ -8,6 +8,7 @@ div.header {
 
 }
 div.content{
+	
 	font-family: "Montserrat";
 	color: white;
 	width: 170px;
@@ -17,7 +18,7 @@ div.content{
 	text-align: center;
 	line-height: 30px;
 	background-color: #febb00 ;
-	
+
 	margin: 4px;
 	float: left;
 
@@ -31,7 +32,7 @@ div.content{
 }
 
 
-<!--comment baby 
+<!--comment baby
 (2) dd3300 Red(Orange) (.91 - 1.0)
 (3) ff6600  (.81 - 90)
 (4) ff9900  (.71 - 80)

@@ -8,6 +8,8 @@ import json
 
 url = urlparse(os.environ["SMASH_URL"])
 
+
+
 config = dict(
     database=url.path[1:],
     user=url.username,
@@ -48,6 +50,11 @@ class Users(BaseModel):
     class Meta:
         db_table = 'library'
 
+
+
+def update_count(lib_id, inout):
+    q = Library.update(students= Library.students + inout).where((Library.lname == lib_id) & (Library.capacity >= Library.students+inout) & (0 <= Library.students+inout)).execute()
+    val = list(Library.select().where(Library.lname == lib_id).execute())[0]
 
 
 

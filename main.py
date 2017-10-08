@@ -18,12 +18,22 @@ def index():
 
     return render_template("ui.html")
 
+@app.route('/')
+def ui():
+   return render_template("ui.html")
 
-@app.route("/hello", methods=["POST"])
-def hello():
+@app.route("/helloin", methods=["POST"])
+def helloin():
 
     k = request.form['click_val']
-    val = update_count(k)
+    val = update_count(k,1)
+    return json.dumps({'status': val})
+
+@app.route("/helloout", methods=["POST"])
+def helloout():
+
+    k = request.form['click_val']
+    val = update_count(k,-1)
     return json.dumps({'status': val})
 
 @app.route("/start", methods=["POST"])
@@ -65,6 +75,8 @@ def yield_names():
     # return json.dumps({"success":0})
 
 
+
+
 """
 $.ajax({
 		type:"POST",
@@ -74,7 +86,7 @@ $.ajax({
 		}
 	}).then(function(data) {
 		if (data.success == 1) {
-			doyourupdate(); 
+			doyourupdate();
 		}
 
 	})
