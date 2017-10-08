@@ -149,61 +149,77 @@
 
 		function update_background_color() {
 
-			libs = {"anthro": 0,"art": 0, "bancroft":0, "law":0, "vlsb":0, "haas":0, "wurster":0,
-					"chem":0, "doe":0, "earth":0, "east":0, "kresge":0, "wursterp2":0, "ethnic":0, "theological":0,
-					"irl":0, "government":0, "transportation":0, "stacks":0, "twain":0, "math":0,
-					"moff":0, "morrison":0, "music":0, "newspapers":0, "opt":0, "peer":0, "physics":0, "ph":0,
-					"robbins":0, "socialres":0, "sasian":0};
-			for (var key in libs) {
-				execute_click_loop(key);
-				execute_click_capacity(key);
-				libs[key] = current;
-				var current = parseInt($("#save_val").text())
-				var maxcap = parseInt($("#save_val2").text())
-			
-				var ratio = 1.0*current / maxcap;
-				var color = 0;
-				console.log(current);
-				console.log(maxcap);
-				console.log(ratio);
-				if (0.0 <= ratio <= 0.10) 
-				color = "#007700";
+            $.ajax({
+                type:"GET",
+                url:"returnAll",
+                complete: function(o) {
+                    var libs = o.responseText;
+                    console.log(libs);
+                    libs = JSON.parse(libs);
+                    for (var key in libs) {
+                        var current = libs[key][0];
+                        var maxcap = libs[key][1];
 
-				else if (0.10 < ratio <= 0.20) 
-				color = "#33AA00";
+                        var ratio = 1.0*current / maxcap;
+                        var color = 0;
+                        console.log(current);
+                        console.log(maxcap);
+                        console.log(ratio);
+                        if (0.0 <= ratio <= 0.10)
+                        color = "#007700";
 
-				else if (0.20 < ratio <= 0.30) 
-				color = "#66BB00";
+                        else if (0.10 < ratio <= 0.20)
+                        color = "#33AA00";
 
-				else if (0.30 < ratio <= 0.40) 
-				color = "#99CC00";
+                        else if (0.20 < ratio <= 0.30)
+                        color = "#66BB00";
 
-				else if (0.40 < ratio <= 0.50) 
-				color = "#BBDD00";
+                        else if (0.30 < ratio <= 0.40)
+                        color = "#99CC00";
 
-				else if (0.50 < ratio <= 0.60) 
-				color = "#FEDD00";
+                        else if (0.40 < ratio <= 0.50)
+                        color = "#BBDD00";
 
-				else if (0.60 < ratio <= 0.70) 
-				color = "#FEBB00";
+                        else if (0.50 < ratio <= 0.60)
+                        color = "#FEDD00";
 
-				else if (0.70 < ratio <= 0.80) 
-				color = "#FF9900";
+                        else if (0.60 < ratio <= 0.70)
+                        color = "#FEBB00";
 
-				else if (0.80 < ratio <= 0.90) 
-				color = "#FF6600";
+                        else if (0.70 < ratio <= 0.80)
+                        color = "#FF9900";
 
-				else if (0.90 < ratio <= 1.0) 
-				color = "dd3300";
+                        else if (0.80 < ratio <= 0.90)
+                        color = "#FF6600";
 
-				else if (1.0 < ratio) 
-				color = 'black';
-			console.log(color);
+                        else if (0.90 < ratio <= 1.0)
+                        color = "dd3300";
 
-			$("#"+key).css("background-color", color);
-			console.log(key);
-				document.getElementById(key).style["background-color"] = color;
-			}
+                        else if (1.0 < ratio)
+                        color = 'black';
+                        console.log(color);
+
+                        $("#"+key).css("background-color", color);
+                        console.log(key);
+                    }
+
+{#                    {"eastAsian",[1,100]}#}
+
+
+
+
+
+
+
+                }
+            })
+
+{#			libs = {"anthro": 0,"art": 0, "bancroft":0, "law":0, "vlsb":0, "haas":0, "wurster":0,#}
+{#					"chem":0, "doe":0, "earth":0, "east":0, "kresge":0, "wursterp2":0, "ethnic":0, "theological":0,#}
+{#					"irl":0, "government":0, "transportation":0, "stacks":0, "twain":0, "math":0,#}
+{#					"moff":0, "morrison":0, "music":0, "newspapers":0, "opt":0, "peer":0, "physics":0, "ph":0,#}
+{#					"robbins":0, "socialres":0, "sasian":0};#}
+
 		}
 
 		$(document).ready(function(){

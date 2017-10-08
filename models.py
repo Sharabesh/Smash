@@ -4,6 +4,7 @@ from playhouse import signals
 from playhouse.postgres_ext import *
 from playhouse.csv_loader import *
 from urllib.parse import urlparse
+import json
 
 url = urlparse(os.environ["SMASH_URL"])
 
@@ -61,4 +62,15 @@ def get_capacity(lib_id):
     else:
         return 10000
     return val.capacity
+
+def return_everything():
+    val = Library.select().execute()
+    output_dict = {}
+    for element in val:
+        lname  = element.lname
+        s = element.students
+        c = element.capacity
+        output_dict[lname] = [s,c]
+
+    return json.dumps(output_dict)
 

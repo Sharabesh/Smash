@@ -42,6 +42,13 @@ def capacity():
 
 
 
+@app.route("/returnAll",methods=["GET"])
+def dumpAll():
+    return return_everything()
+
+
+
+
 
     # @app.route("/updateClick",methods=["POST"])
     # def hello():
