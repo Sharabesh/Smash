@@ -209,9 +209,9 @@
 
                         var ratio = 1.0*current / maxcap;
                         var color = 0;
-                        console.log(current);
-                        console.log(maxcap);
-                        console.log(ratio);
+                        // console.log(current);
+                        // console.log(maxcap);
+                        // console.log(ratio);
                         if (0.0 <= ratio <= 0.10)
                         color = "#007700";
 
@@ -239,15 +239,16 @@
                         else if (0.80 < ratio <= 0.90)
                         color = "#FF6600";
 
-                        else if (0.90 < ratio <= 1.0)
+                        else if (0.90 < ratio <= 0.99){
+                        // console.log(ratio);
                         color = "dd3300";
-
-                        else if (1.0 < ratio)
-                        color = 'black';
-                        console.log(color);
+                    }
+                        else if (1.0 <= ratio)
+                        color = '000000';
+                        // console.log(color);
 
                         $("#"+key).css("background-color", color);
-                        console.log(key);
+                        // console.log(key);
                     }
 
 
