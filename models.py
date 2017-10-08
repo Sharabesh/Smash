@@ -4,6 +4,7 @@ from playhouse import signals
 from playhouse.postgres_ext import *
 from playhouse.csv_loader import *
 from urllib.parse import urlparse
+import json
 
 url = urlparse(os.environ["SMASH_URL"])
 
@@ -40,7 +41,61 @@ class Library(BaseModel):
         db_table = 'library'
 
 
+class Users(BaseModel):
+    userid = peewee.PrimaryKeyField(null=True)
+    username = peewee.CharField(null=True)
+    password = peewee.CharField(null=True)
+    email = peewee.CharField(null=True)
+
+    class Meta:
+        db_table = 'library'
+
+
+
 def update_count(lib_id, inout):
     q = Library.update(students= Library.students + inout).where((Library.lname == lib_id) & (Library.capacity >= Library.students+inout) & (0 <= Library.students+inout)).execute()
     val = list(Library.select().where(Library.lname == lib_id).execute())[0]
+
+
+
+
+def update_count(lib_id):
+    q = Library.update(students= Library.students + 1).where(Library.lname == lib_id).execute()
+    val = list(Library.select().where(Library.lname == lib_id).execute())
+    if val:
+        val = val[0]
+    else:
+        return 10000
     return val.students
+
+
+def get_count(lib_id):
+    val = list(Library.select().where(Library.lname == lib_id).execute())
+    if val:
+        val = val[0]
+    else:
+        return 10000
+    return val.students
+def get_capacity(lib_id):
+    val = list(Library.select().where(Library.lname == lib_id).execute())
+    if val:
+        val = val[0]
+    else:
+        return 10000
+    return val.capacity
+
+def return_everything():
+    val = Library.select().execute()
+    output_dict = {}
+    for element in val:
+        lname  = element.lname
+        s = element.students
+        c = element.capacity
+        output_dict[lname] = [s,c]
+
+    return json.dumps(output_dict)
+
+
+def get_all_names():
+    return list(Library.select(Library.lname).execute())
+
