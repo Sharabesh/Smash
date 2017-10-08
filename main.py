@@ -16,7 +16,7 @@ app.static_folder = 'static'
 def index():
     # return '<html><body><h1>dsljgh World</h1></body></html>'
 
-    return render_template("ui.html")
+    return render_template("ui.html", user_logged_in=True)
 
 @app.route('/')
 def ui():
