@@ -39,6 +39,19 @@ class Library(BaseModel):
         db_table = 'library'
 
 
+class Users(BaseModel):
+    userid = peewee.PrimaryKeyField(null=True)
+    username = peewee.CharField(null=True)
+    password = peewee.CharField(null=True)
+    email = peewee.CharField(null=True)
+
+    class Meta:
+        db_table = 'library'
+
+
+
+
+
 def update_count(lib_id):
     q = Library.update(students= Library.students + 1).where(Library.lname == lib_id).execute()
     val = list(Library.select().where(Library.lname == lib_id).execute())
@@ -47,6 +60,7 @@ def update_count(lib_id):
     else:
         return 10000
     return val.students
+
 
 def get_count(lib_id):
     val = list(Library.select().where(Library.lname == lib_id).execute())
@@ -73,4 +87,8 @@ def return_everything():
         output_dict[lname] = [s,c]
 
     return json.dumps(output_dict)
+
+
+def get_all_names():
+    return list(Library.select(Library.lname).execute())
 
