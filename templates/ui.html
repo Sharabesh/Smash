@@ -29,6 +29,14 @@
 
 
 
+		<p id="save_val" style= "display:hidden"></p>
+		<p id="save_val2" style= "display:hidden"></p>
+		<p id="save_val3" style= "display:hidden"></p>
+
+
+
+
+
 
 
 
@@ -71,11 +79,12 @@
 			<option value = "sasian">South/Southeast Asia Library</option>
 		</select>
 
-    {% if user_logged_in %}
-        <button type="delete"   style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary" onclick="execute_out()" >Check Out</button>
 
- 		<button type="delete"  style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary" onclick="execute_in()" >Check In</button>
-    {% endif %}
+
+
+<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_out()" >Check Out</button>
+
+ 		<button type="delete" input style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary"onclick="execute_in()" >Check In</button>
 
 
 </div>
@@ -160,6 +169,10 @@
                     }
 				})
 			}
+
+		
+
+
 		function execute_click_loop(lib_id) {
 				var k = lib_id;
 				$.ajax({
@@ -189,7 +202,7 @@
 				    complete: function(o) {
                         obj = JSON.parse(o.responseText);
                         return_val = obj['status'];
-                        
+
                         $("#save_val2").text = return_val
 
                     }

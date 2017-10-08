@@ -1,6 +1,7 @@
 from flask import Flask
 import os
 from flask import render_template
+from flask import session
 from flask import *
 import json
 from models import *
@@ -14,14 +15,8 @@ app.static_folder = 'static'
 
 
 @app.route('/')
-def index():
-    # return '<html><body><h1>dsljgh World</h1></body></html>'
-
-    return render_template("ui.html", user_logged_in=True)
-
-@app.route('/')
 def ui():
-   return render_template("ui.html")
+    return render_template('ui.html')
 
 @app.route("/helloin", methods=["POST"])
 def helloin():
@@ -29,6 +24,11 @@ def helloin():
     k = request.form['click_val']
     val = update_count(k,1)
     return json.dumps({'status': val})
+
+@app.route("/login", methods=["POST"])
+def login():
+    return render_template('ui.html', user_logged_in=True)
+
 
 @app.route("/helloout", methods=["POST"])
 def helloout():
