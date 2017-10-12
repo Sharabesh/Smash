@@ -71,11 +71,11 @@
 			<option value = "sasian">South/Southeast Asia Library</option>
 		</select>
 
-    {% if user_logged_in %}
+
         <button type="delete"   style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary" onclick="execute_out()" >Check Out</button>
 
  		<button type="delete"  style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary" onclick="execute_in()" >Check In</button>
-    {% endif %}
+
 
 
 </div>
@@ -189,7 +189,7 @@
 				    complete: function(o) {
                         obj = JSON.parse(o.responseText);
                         return_val = obj['status'];
-                        
+
                         $("#save_val2").text = return_val
 
                     }

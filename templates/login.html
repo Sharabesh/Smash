@@ -1,0 +1,259 @@
+<html>
+	<head>
+		<title>Save Me A Seat, Honey</title>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+
+{#		<script src = "{{ url_for('static', filename='jquery.min.js') }}"></script>#}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+
+
+
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='mystyle.css') }}" >
+		<style>
+		body {
+			background-color: #F5F5F5;
+			text-align: center;
+			vertical-align: middle;
+		}
+		</style>
+
+
+
+
+
+
+
+    <div class="container-fluid">
+		<div class = "header">
+		Select a Library:
+		<select name="list_of_libraries" id="listOfLibraries" class="" data-live-search="true" title="Choose a Library">
+  			<option value="UC BERKELEY LIBRARIES" disabled>UC BERKELEY LIBRARIES</option>
+  			<option value = "anthro">Anthropology Library</option>
+			<option value = "art">Art History/Classics Library</option>
+			<option value = "bancroft">Bancroft Library/University Archives</option>
+			<option value = "law">Berkeley Law Library</option>
+			<option value = "vlsb">Bioscience and Natural Resources Library</option>
+			<option value = "haas">Business Library</option>
+			<option value = "wurster">CED Visual Resources Library</option>
+			<option value = "chem">Chemistry and Chemical Engineering Library</option>
+			<option value = "doe">Doe Library</option>
+			<option value = "earth">Earth Sciences and Map Library</option>
+			<option value = "east">East Asian Library</option>
+			<option value = "kresge">Engineering Library</option>
+			<option value = "wursterp2">Environmental Design Library</option>
+			<option value = "ethnic">Ethnic Studies Library</option>
+			<option value = "theological">Graduate Theological Union Library</option>
+			<option value = "irl">Institute for Research on Labor and Employment Library</option>
+			<option value = "government">Institute of Governmental Studies Library</option>
+			<option value = "transportation">Institute of Transportation Studies Library</option>
+			<option value = "stacks">Main (Gardner) Stacks</option>
+			<option value = "twain">Mark Twain Papers and Project</option>
+			<option value = "math">Mathematics Statistics Library</option>
+			<option value = "moff">Moffitt Library</option>
+			<option value = "morrison">Morrison Library</option>
+			<option value = "music">Music Library</option>
+			<option value = "newspapers">Newspapers and Microforms Library</option>
+			<option value = "opt">Optometry and Health Sciences Library</option>
+			<option value = "peer">Pacific Earthquake Engineering Research (PEER) Library</option>
+			<option value = "physics">Physics-Astronomy Library</option>
+			<option value = "ph">Public Health Library</option>
+			<option value = "robbins">Robbins Collection Library</option>
+			<option value = "socialres">Social Research Library</option>
+			<option value = "sasian">South/Southeast Asia Library</option>
+		</select>
+
+
+        <button type="delete"   style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary" onclick="log_in()" >Log In</button>
+
+
+
+
+</div>
+	</head>
+
+
+	<body>
+
+    <div class="container">
+	<div class = "content" id = "anthro">Anthropology Library</div>
+		<div class = "content" id ="art">Art History/Classics Library</div>
+		<div class = "content" id = "bancroft">Bancroft Library/University Archives</div>
+		<div class = "content" id = "law">Berkeley Law Library</div>
+		<div class = "content" id = "vlsb">Bioscience and Natural Resources Library</div>
+		<div class = "content" id = "haas">Business Library</div>
+		<div class = "content" id = "wurster">CED Visual Resources Library</div>
+		<div class = "content" id = "chem">Chemistry and Chemical Engineering Library</div>
+		<div class = "content" id = "doe">Doe Library</div>
+		<div class = "content" id = "earth">Earth Sciences and Map Library</div>
+		<div class = "content" id = "east">East Asian Library</div>
+		<div class = "content" id = "kresge">Engineering Library</div>
+		<div class = "content" id = "wursterp2">Environmental Design Library</div>
+		<div class = "content" id = "ethnic">Ethnic Studies Library</div>
+		<div class = "content" id = "theological">Graduate Theological Union Library</div>
+		<div class = "content" id = "irl">Institute for Research on Labor and Employment Library</div>
+		<div class = "content" id = "government">Institute of Governmental Studies Library</div>
+		<div class = "content" id = "transportation">Institute of Transportation Studies Library</div>
+		<div class = "content" id = "stacks">Main (Gardner) Stacks</div>
+		<div class = "content" id = "twain">Mark Twain Papers and Project</div>
+		<div class = "content" id = "math">Mathematics Statistics Library</div>
+		<div class = "content" id = "moff">Moffitt Library</div>
+		<div class = "content" id = "morrison">Morrison Library</div>
+		<div class = "content" id = "music">Music Library</div>
+		<div class = "content" id = "newspapers">Newspapers and Microforms Library</div>
+		<div class = "content" id = "opt">Optometry and Health Sciences Library</div>
+		<div class = "content" id = "peer">Pacific Earthquake Engineering Research (PEER) Library</div>
+		<div class = "content" id = "physics">Physics-Astronomy Library</div>
+		<div class = "content" id = "ph">Public Health Library</div>
+		<div class = "content" id = "robbins">Robbins Collection Library</div>
+		<div class = "content" id = "socialres">Social Research Library</div>
+		<div class = "content" id = "sasian">South/Southeast Asian Library</div>
+        </div>
+</div>
+		<script>
+
+			// function reply_click_checkin(clicked_id) {
+   // 				<!--LINK PYTHON FUNCTION-->
+			// }
+
+			// function reply_click_checkout(clicked_id) {
+   // 				<!--LINK PYTHON FUNCTION-->
+			// }
+
+
+			function log_in() {
+				var k = $("#listOfLibraries").val();
+				$.ajax({
+          type:"POST",
+					url: "/login",
+            complete: function(o) {
+                      console.log('completed')
+                  }
+				})
+			}
+		function execute_click_loop(lib_id) {
+				var k = lib_id;
+				$.ajax({
+					type:"POST",
+					url: "/start",
+					data: {
+						"click_val":k
+					},
+				    complete: function(o) {
+                        obj = JSON.parse(o.responseText);
+                        var done = obj['status'];
+                        console.log(done);
+                        console.log('is_done');
+                        $("#save_val").text = done;
+                    }
+				})
+			}
+		function execute_click_capacity(lib_id) {
+				var k = lib_id;
+				var return_val;
+				$.ajax({
+					type:"POST",
+					url: "/capacity",
+					data: {
+						"click_val":k
+					},
+				    complete: function(o) {
+                        obj = JSON.parse(o.responseText);
+                        return_val = obj['status'];
+
+                        $("#save_val2").text = return_val
+
+                    }
+				})
+				return return_val;
+			}
+
+
+		function update_background_color() {
+
+            $.ajax({
+                type:"GET",
+                url:"returnAll",
+                complete: function(o) {
+                    var libs = o.responseText;
+                    console.log(libs);
+                    libs = JSON.parse(libs);
+                    for (var key in libs) {
+                        var current = libs[key][0];
+                        var maxcap = libs[key][1];
+
+                        var ratio = 1.0*current / maxcap;
+                        var color = 0;
+                        // console.log(current);
+                        // console.log(maxcap);
+                        // console.log(ratio);
+                        if (0.0 <= ratio <= 0.10)
+                        color = "#007700";
+
+                        else if (0.10 < ratio <= 0.20)
+                        color = "#33AA00";
+
+                        else if (0.20 < ratio <= 0.30)
+                        color = "#66BB00";
+
+                        else if (0.30 < ratio <= 0.40)
+                        color = "#99CC00";
+
+                        else if (0.40 < ratio <= 0.50)
+                        color = "#BBDD00";
+
+                        else if (0.50 < ratio <= 0.60)
+                        color = "#FEDD00";
+
+                        else if (0.60 < ratio <= 0.70)
+                        color = "#FEBB00";
+
+                        else if (0.70 < ratio <= 0.80)
+                        color = "#FF9900";
+
+                        else if (0.80 < ratio <= 0.90)
+                        color = "#FF6600";
+
+                        else if (0.90 < ratio <= 0.99){
+                        // console.log(ratio);
+                        color = "dd3300";
+                    }
+                        else if (1.0 <= ratio)
+                        color = '000000';
+                        // console.log(color);
+
+                        $("#"+key).css("background-color", color);
+                        // console.log(key);
+                    }
+
+
+
+
+
+
+
+
+
+                }
+            })
+
+
+
+		}
+
+		$(document).ready(function(){
+			update_background_color();
+		})
+
+		</script>
+	</body>
+
+</html>

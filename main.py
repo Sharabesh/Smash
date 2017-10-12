@@ -1,8 +1,14 @@
+from __future__ import print_function # In python 2.7
+import sys
 from flask import Flask
 import os
+from flask import session
 from flask import render_template
+from flask import flash, redirect, request, abort
 from flask import *
 import json
+
+
 from models import *
 
 
@@ -14,14 +20,24 @@ app.static_folder = 'static'
 
 
 @app.route('/')
-def index():
-    # return '<html><body><h1>dsljgh World</h1></body></html>'
+def index(fill=False):
+    if not fill:
+        return render_template('login.html')
+    else:
+        print('Hello world!', file=sys.stderr)
+        return redirect(url_for('home'))
 
-    return render_template("ui.html", user_logged_in=True)
+@app.route('/home')
+def home():
+    print("yikes")
+    return render_template('ui.html')
 
-@app.route('/')
-def ui():
-   return render_template("ui.html")
+
+@app.route("/login", methods = ["POST"])
+def login():
+    return index(True)
+
+
 
 @app.route("/helloin", methods=["POST"])
 def helloin():
@@ -63,16 +79,6 @@ def yield_names():
 
 
 
-@app.route("/login",methods=["POST"])
-def login():
-    user = request.form["username"]
-    password = request.form["password"]
-    s = Session()
-    s.user_id = user
-    s.password = password
-    response = make_response(render_template("ui.html",user_logged_in=True))
-    response.set_cookie("session_id",s.session_id)
-    return response
 
 
 
