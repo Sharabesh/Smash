@@ -89,4 +89,3 @@ def return_everything():
 
 def get_all_names():
     return list(Library.select(Library.lname).execute())
-
