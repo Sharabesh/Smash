@@ -34,6 +34,10 @@
 
     <div class="container-fluid">
 		<div class = "header">
+		<div id = "b4"> 
+			Save Me a Seat, Honey
+		</div>
+		<div style="visibility: hidden"  id = "listOfLibraries1">
 		Select a Library:
 		<select name="list_of_libraries" id="listOfLibraries" class="" data-live-search="true" title="Choose a Library">
   			<option value="UC BERKELEY LIBRARIES" disabled>UC BERKELEY LIBRARIES</option>
@@ -70,12 +74,26 @@
 			<option value = "socialres">Social Research Library</option>
 			<option value = "sasian">South/Southeast Asia Library</option>
 		</select>
+		</div>
 
 
-        <button type="delete"   style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary" onclick="log_in()" >Log In</button>
+<!-- 		<div id = "log1">
+        	<button type="delete"   style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary" onclick="log_in()" >Log In</button>
+        </div> -->
 
+ <div id="first">
+ 	<form action="" method="post">
+                    <input type="text" id="loginusername" placeholder="Username" />
+                    <input type="password" id="loginpassword" placeholder="Password" />
+                    <input type="button" class="login" value="Sign In" />
+                </form>
+            </div>
+              <div  style="visibility:hidden" id="second">
+              <button type="delete"   style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary" onclick="execute_out()" >Check Out</button>
 
+ 			<button type="delete"  style="background-color:#F5F5F5;color:black" name="submitSent" class="btn btn-primary" onclick="execute_in()" >Check In</button>
 
+             </div>
 
 </div>
 	</head>
@@ -128,15 +146,36 @@
    // 				<!--LINK PYTHON FUNCTION-->
 			// }
 
+			function execute_in() {
+				var k = $("#listOfLibraries").val();
+                console.log("HER");
+				$.ajax({
+					type:"POST",
+					url: "/helloin",
+					data: {
+						"click_val":k
+					},
+				    complete: function(o) {
+                        obj = JSON.parse(o.responseText);
+                        var done = obj['status'];
+                        console.log(done)
+                    }
+				})
+			}
 
-			function log_in() {
+			function execute_out() {
 				var k = $("#listOfLibraries").val();
 				$.ajax({
-          type:"POST",
-					url: "/login",
-            complete: function(o) {
-                      console.log('completed')
-                  }
+					type:"POST",
+					url: "/helloout",
+					data: {
+						"click_val":k
+					},
+				    complete: function(o) {
+                        obj = JSON.parse(o.responseText);
+                        var done = obj['status'];
+
+                    }
 				})
 			}
 		function execute_click_loop(lib_id) {
@@ -251,6 +290,29 @@
 
 		$(document).ready(function(){
 			update_background_color();
+                 // on click Sign In Button checks that username =='admin' and password == 'password'
+                 $(".login").click(function(){
+                 if( $("#loginusername").val()=='admin' && $("#loginpassword").val()=='password') {
+                         $("#first").hide();                         	
+                          $("#in").show();
+                          $("#b4").hide();
+                          $('#listOfLibraries1').css("visibility","visible")
+                          $('#second').css("visibility","visible")
+
+                     }
+                 else {
+                     alert("Please try again");
+                 }
+ 					
+                 $(".logout").click(function() {
+                 $("form")[0].reset();
+                 $("#second").children('p, input').remove();
+                 $("#first").show();
+                 $("#second").hide();
+             });
+         });
+
+
 		})
 
 		</script>
